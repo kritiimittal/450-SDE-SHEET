@@ -1,0 +1,26 @@
+class Solution
+{
+    int sum(Node node){
+        
+        if(node==null){
+            return 0;
+        }
+        return sum(node.left)+sum(node.right)+node.data;
+    }
+    
+	boolean isSumTree(Node root)
+	{
+             // Your code here
+             if(root==null){
+                 return true;
+             }
+             
+             if(root.left==null && root.right==null){
+                 return true;
+             }
+             
+             int ans=sum(root.left)+sum(root.right);
+             return (ans==root.data) && (isSumTree(root.left)) && (isSumTree(root.right));
+             
+	}
+}
